@@ -38,6 +38,8 @@ for i in sliced:
 new_file = open("new_file.txt", "w+")
 new_file.write(output.replace(':', ''))
 
+print 'ok'
+
 # a = [1,2,3,4,5]
 
 # b = a.pop(3)
