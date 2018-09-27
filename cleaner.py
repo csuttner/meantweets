@@ -1,57 +1,68 @@
-def cleanup(file_name):
+# Goal - obtain list of sentences, in the format of a list of words
 
-	def remove_non_ascii_1(text):
+# how do we scan for just words to trim out all of the special characters as efficiently as possible?
 
-		out = ''
+import csv
 
-		for i in text:
+# function to split csv into tweets
+def tweetparse(file_name):
 
-			if ord(i)<128:
+	with open(file_name, 'r') as f:
+		reader = csv.reader(f)
+		tweetlist = list(reader)
 
-				out = out + i
+	# return tweetlist
 
-			else:
+	testlist = []
 
-				out = out + ' '
+	for i in tweetlist:
 
-		return out
+		testlist.append(len(i))
 
-	def replace_all(text,dic):
+	return tweetlist
 
-		for p,q in dic.iteritems():
+	# def remove_non_ascii_1(text):
 
-			text = text.replace(p,q)
+	# 	text = text.lower()
 
-		return text
+	# 	return ''.join([i if ord(i) < 128 else ' ' for i in text])
 
-	d = {'"':'', '(':'',')':'','&amp;':'','\n':' ',',':' '}
+	# def replace_all(text,dic):
 
-	stp = replace_all(remove_non_ascii_1(open(file_name,'U').read()),d)
+	# 	for p,q in dic.iteritems():
 
-	sliced = list(stp.split(' '))
+	# 		text = text.replace(p,q)
 
-	output = ''
+	# 	return text
 
-	for i in sliced:
+	# d = {'"':'', '(':'',')':'','&amp;':'','\n':' ',',':' '}
 
-		if i != '':
+	# stp = replace_all(remove_non_ascii_1(open(file_name,'U').read()),d)
 
-			if len(i) > 1 and i.count('.') == len(i) / 2:
+	# sliced = list(stp.split(' '))
 
-				output = output + i.replace('.', '') + ' '
+	# output = ''
 
-			elif i.count('.') > 1 and i.count('.') < len(i) and 'pic' not in i[0:i.find('.')]:
+	# for i in sliced:
 
-				i = i[0:i.find('.')]
+	# 	if i != '':
 
-				if '/' not in i:
+	# 		if len(i) > 1 and i.count('.') == len(i) / 2:
 
-					output = output + i + '. '
+	# 			output = output + i.replace('.', '') + ' '
+
+	# 		elif i.count('.') > 1 and i.count('.') < len(i) and 'pic' not in i[0:i.find('.')]:
+
+	# 			i = i[0:i.find('.')]
+
+	# 			if '/' not in i:
+
+	# 				output = output + i + '. ' 
 			
-			elif '/' not in i:
+	# 		elif '/' not in i:
 
-				output = output + i + ' '
-
-	return output.lower()	
+	# 			output = output + i + ' '	
 	
-	# open('Obama2.txt','w').write(output)
+	# return output
+
+print tweetparse('Trump.csv')

@@ -1,28 +1,14 @@
-# "MoSt AvErAgE sEnTeNcE"
-
 import math
 
 import re
 
 import time
 
-from testalg import cleanup
+from cleaner import cleanup
+
+from mtclasses import eword
 
 start_time = time.time()
-
-# define class eword (every word) to give each word in the body properties:
-# 'normindx' (normalized index): value between 0 and 1 that represents the location
-# of the word within the parent sentence
-# 'sval' (sentance value): weight of this word's 'value' inversely proportional to
-# sentance length (words occuring in shorter sentances have more weight)
-class eword:
-
-	def __init__(self, word, pslen, psindx):
-		self.word = word
-		self.pslen = pslen
-		self.psindx = psindx
-		self.normindx = psindx / pslen
-		self.sval = 1 / pslen
 
 # define splitting function that works for multiple delimiters at once
 def split(delimiters, string, maxsplit=0):
@@ -33,7 +19,7 @@ def split(delimiters, string, maxsplit=0):
 
 # assigning a variable inpt to the string of characters in the text file
 # use this function to split inpt (string) into list of sentences 
-sentences = split('.!?', cleanup('Trump.txt')) 
+sentences = split('.!?', cleanup('Obama.txt'))
 
 # spaces will exist in front of the first word of every 2nd+ sentance, so creating a blank array to fill with fixed versions
 fixedsentences = [] 
