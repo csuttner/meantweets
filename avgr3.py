@@ -2,20 +2,38 @@
 
 import math
 
-# assigning a variable inpt to the string of characters in the text file
-inpt = open('obama2.txt','r').read().lower()
+import re
+
+import time
+
+from testalg import cleanup
+
+start_time = time.time()
+
+# define class eword (every word) to give each word in the body properties:
+# 'normindx' (normalized index): value between 0 and 1 that represents the location
+# of the word within the parent sentence
+# 'sval' (sentance value): weight of this word's 'value' inversely proportional to
+# sentance length (words occuring in shorter sentances have more weight)
+class eword:
+
+	def __init__(self, word, pslen, psindx):
+		self.word = word
+		self.pslen = pslen
+		self.psindx = psindx
+		self.normindx = psindx / pslen
+		self.sval = 1 / pslen
 
 # define splitting function that works for multiple delimiters at once
 def split(delimiters, string, maxsplit=0):
-    
-    import re
     
     regexPattern = '|'.join(map(re.escape, delimiters))
     
     return re.split(regexPattern, string, maxsplit)
 
+# assigning a variable inpt to the string of characters in the text file
 # use this function to split inpt (string) into list of sentences 
-sentences = split('.!?', inpt) 
+sentences = split('.!?', cleanup('Trump.txt')) 
 
 # spaces will exist in front of the first word of every 2nd+ sentance, so creating a blank array to fill with fixed versions
 fixedsentences = [] 
@@ -37,19 +55,7 @@ for i in sentences:
 			# add this sentence to the end of the blank array (list)
 			fixedsentences.append(i)
 
-# define class eword (every word) to give each word in the body properties:
-# 'normindx' (normalized index): value between 0 and 1 that represents the location
-# of the word within the parent sentence
-# 'sval' (sentance value): weight of this word's 'value' inversely proportional to
-# sentance length (words occuring in shorter sentances have more weight)
-class eword:
-
-	def __init__(self, word, pslen, psindx):
-		self.word = word
-		self.pslen = pslen
-		self.psindx = psindx
-		self.normindx = psindx / pslen
-		self.sval = 1 / pslen
+print 1, round(time.time() - start_time)
 
 # create blank array to fill with 'eword' objects
 mainarr = []	
@@ -86,6 +92,8 @@ for j in fixedsentences:
 # obtain the average number of words per sentence
 # rounding this up will obtain the number of slots to be filled in the final output
 numfin = numwords / len(fixedsentences)
+
+print 2, round(time.time() - start_time)
 
 # this is the final list, the length of which will be the average number of words in 
 # the body's sentences. each element in this list will be an array of all of the body's 
@@ -142,8 +150,11 @@ for n in range(int(round(numfin))):
 	# add this array to the outer array
 	outarr.append(inarr)
 
+print 3, round(time.time() - start_time)
+
 # printing the words with highest sval in respective slot, along with the runner ups
 # for context
 for q in outarr:
 
-	print q[0].word, q[0].sval, q[1].word, q[1].sval
+	print q[0].word
+
