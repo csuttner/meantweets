@@ -1,4 +1,4 @@
-# Obtains 3D list of list of lists (tweets, sentances, words)
+# Cleans CSV and returns first column as 3D list of list of lists (tweets, sentences, words)
 
 import csv
 import re
@@ -15,10 +15,10 @@ def tweetparse(file_name):
 	# allowable characters list
 	chrallow = range(97,123)
 	chrallow.extend(range(48,58))
-	chrallow.extend([32,33,35,38,39,46,47,43,58,63,64,])
+	chrallow.extend([32,33,38,39,45,46,47,43,58,63,])
 
 	separators = ['.','?','!']
-	d = {':':'','.':'','&amp':'and'}
+	d = {':':'','.':'','&amp':'and','-':'','!':''}
 
 	# obtain list of words in tweets
 	for i in alldata[1:len(alldata)]:
@@ -27,14 +27,15 @@ def tweetparse(file_name):
 		j = list(i[0].split(' '))
 		words = []
 		
-		for n in j: # hyperlink control and sentance encoding
+		for n in j: # hyperlink control and sentence encoding
 			if '/' in n and '.' in n:
-				n = n[0:n.find('http')]
-				n = n[0:n.find('pic.')]
-			elif len(n) > 0 and n[-1] in separators:
+				if 'http' in n:
+					n = n[0:n.find('http')]
+				elif 'pic.' in n:
+					n = n[0:n.find('pic.')]
+			elif len(n) > 1 and n[-1] in separators:
 				n = n[:-1] + '*'
 			words.append(replace_all(n,d))
-		
 		words = filterblanks(words)
 		sentences = list(' '.join(words).split('*'))
 		sentences = filterblanks(sentences)

@@ -2,67 +2,66 @@ import math
 from cleaner import tweetparse
 from mtclasses import eword
 
-start_time = time.time()
-
-tweets = tweetparse('Obama.csv')	
+tweets = tweetparse('obama.csv')	
 
 uwords = {}	
 wordsoup = []
 numwords = 0
 numsens = 0
 
-for tw_c, tweet in enumerate(tweets): 
-	for sentance in tweet:
-		s_len = len(sentance)
+# collect properties of every word with eword class
+for tweet in tweets:
+	t_len = sum(len(t) for t in tweet)
+	tw_indx = 0
+	for se_c, sentence in enumerate(tweet):
+		s_len = len(sentence)
 		numsens += 1
-		for wo_c, word in enumerate(sentance):
-			wordsoup.append(eword(word,s_len,wo_c))
+		for wo_c, word in enumerate(sentence):
+			wordsoup.append(eword(word,s_len,wo_c,t_len,tw_indx))
 			numwords += 1
+			tw_indx += 1
 			if word not in uwords.keys():
 				uwords[word] = 1
 			else:
 				uwords[word] += 1
+	# print t_len, tweet
 		
-numfin = float(numwords) / numsens
+numfin = float(numwords) / len(tweets)
 
-# this is the final list, the length of which will be the average number of words in 
-# the body's sentences. each element in this list will be an array of all of the body's 
-# ewords who's normalized indexes fall into the range, sorted by highest to lowest total
-# (sval sum)/sqrt(frequency of word in body). this seems to reasonably attenuate common 
-# words like the, and, is. 
+# each element in outarr is an array of all of the body's ewords who's normalized indexes 
+# fall into the range, sorted by highest to lowest total (sval sum)/sqrt(frequency of word in body)
+# this seems to reasonably attenuate common words like the, and, is. 
 outarr = []
-sandwich = ''
 
 for n in range(int(round(numfin))):
 	inarr = []
 	inwords = []
+	# sandwich = ''
 	# loop through the array of every word in the body's eword objects
 	for o in wordsoup:
-		sandwich += o.word + ' '
+		# sandwich += o.word + ' '
 		# if the normalized index of the word falls within the range of n to n+1
-		if o.normindx < ((n+1)/float((int(round(numfin))))) and o.normindx >= (n/(float(int(round(numfin))))):
+		if o.tnormindx < ((n+1)/float((int(round(numfin))))) and o.tnormindx >= (n/(float(int(round(numfin))))):
 			if o.word not in inwords:
 				inwords.append(o.word)
 				inarr.append(o)
-				
 			else:
 				for p in inarr:
 					if p.word == o.word:
-						p.sval += o.sval	
+						p.tval += o.tval
 	
 	# once the bin is full, attenuate sval sums by dividing by the square root of total
 	# occurances of that word in the entire body
 	for r in inarr:
-		r.sval = r.sval / math.sqrt(uwords[r.word])
+		r.tval = r.tval / math.log1p(uwords[r.word]+1)
 	# sort
-	inarr.sort(key = lambda x: x.sval, reverse = True)
+	inarr.sort(key = lambda x: x.tval, reverse = True)
 	outarr.append(inarr)
 
 # print sandwich
 
-# printing the words with highest sval in respective slot, along with the runner ups
-# for context
+# printing the words with highest sval in respective slot, & runner upsx
 for q in outarr:
 
-	print q[0].word, q[0].sval, q[1].word, q[1].sval
+	print q[0].word, q[0].tval, q[1].word, q[1].tval
 
