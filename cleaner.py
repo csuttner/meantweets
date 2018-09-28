@@ -3,23 +3,37 @@
 # how do we scan for just words to trim out all of the special characters as efficiently as possible?
 
 import csv
+# import re
 
-# function to split csv into tweets
+#splitting function for multiple delimiters
+# def split(delimiters, string, maxsplit=0):
+# 	regexPattern = '|'.join(map(re.escape, delimiters))
+# 	return re.split(regexPattern, string, maxsplit)
+
+# CSV -> List of [[Text, Date... etc],[Text, ...]]
 def tweetparse(file_name):
-
 	with open(file_name, 'r') as f:
-		reader = csv.reader(f)
-		tweetlist = list(reader)
+		readcsv = csv.reader(f)
+		alldata = list(readcsv)
 
-	# return tweetlist
+	tweets = []
 
-	testlist = []
+	chrallow = range(97,122)
+	chrallow.extend(range(48,57))
+	chrallow.extend([32,33,35,39,45,46,47,43,58,63,64])
 
-	for i in tweetlist:
+	for i in alldata[1:len(alldata)]:
+		i[0] = i[0].lower()
+		i[0] = ''.join([k if ord(k) in chrallow else ' ' for k in i[0]])
+		j = list(i[0].split(' '))
+		j = filter(lambda a: a != '',j)
+		tweets.append(j)
+	
+	return tweets
 
-		testlist.append(len(i))
+	# need to handle special chars, hyperlinks, and aconyms
 
-	return tweetlist
+
 
 	# def remove_non_ascii_1(text):
 
@@ -65,4 +79,6 @@ def tweetparse(file_name):
 	
 	# return output
 
-print tweetparse('Trump.csv')
+print tweetparse('obama.csv')
+
+print ord('d')

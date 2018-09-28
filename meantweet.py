@@ -1,7 +1,5 @@
 import math
 
-import re
-
 import time
 
 from cleaner import cleanup
@@ -15,7 +13,7 @@ def split(delimiters, string, maxsplit=0):
     
     regexPattern = '|'.join(map(re.escape, delimiters))
     
-    return re.split(regexPattern, string, maxsplit)
+	return re.split(regexPattern, string, maxsplit)
 
 # assigning a variable inpt to the string of characters in the text file
 # use this function to split inpt (string) into list of sentences 
