@@ -4,6 +4,7 @@ import math
 # of the word within the parent sentence
 # 'sval' (sentence value): weight of this word's 'value' inversely proportional to
 # sentence length (words occuring in shorter sentences have more weight)
+
 class eword:
 	def __init__(self, word, slen, sindx, twtlen, twindx):
 		self.word = word
@@ -14,7 +15,7 @@ class eword:
 		self.snormindx = sindx / float(slen)
 		self.sval = 1 / float(slen)
 		self.tnormindx = twindx / float(twtlen)
-		self.tval = 1/ math.log1p(float(twtlen)+1)
+		self.tval = 1 / math.sqrt(float(twtlen))
 
 # define splitting function that works for multiple delimiters at once
 def split(delimiters, string, maxsplit=0):

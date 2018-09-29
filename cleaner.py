@@ -1,5 +1,4 @@
 # Cleans CSV and returns first column as 3D list of list of lists (tweets, sentences, words)
-
 import csv
 import re
 from mtclasses import split, replace_all, filterblanks
@@ -40,7 +39,7 @@ def tweetparse(file_name):
 		sentences = list(' '.join(words).split('*'))
 		sentences = filterblanks(sentences)
 		senwords = []
-		
+
 		for o in sentences:
 			words2 = list(o.split(' '))
 			words2 = filterblanks(words2)
