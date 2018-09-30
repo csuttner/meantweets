@@ -14,7 +14,7 @@ def tweetparse(file_name):
 	# allowable characters list
 	chrallow = range(97,123)
 	chrallow.extend(range(48,58))
-	chrallow.extend([32,33,38,39,45,46,47,43,58,63,])
+	chrallow.extend([32,33,35,38,39,45,46,47,43,58,63,64])
 
 	separators = ['.','?','!']
 	d = {':':'','.':'','&amp':'and','-':'','!':''}

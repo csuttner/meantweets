@@ -1,8 +1,9 @@
+import sys
 import math
 from cleaner import tweetparse
 from mtclasses import eword
 
-tweets = tweetparse('Obama.csv')	
+tweets = tweetparse(sys.argv[-1])
 
 uwords = {}	
 wordsoup = []
@@ -55,6 +56,7 @@ for n in range(avw_int):
 	outarr.append(inarr)
 
 # printing the words with highest sval in respective slot, & runner ups
+printout = ''
 for q in outarr:
-	print q[0].word, q[0].tval, q[1].word, q[1].tval, q[2].word, q[2].tval
-
+	printout += q[0].word + ' '
+print printout
