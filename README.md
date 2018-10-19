@@ -13,6 +13,12 @@ Instructions for running:
     git clone https://github.com/skutchiewutch/bizzle.git
   ```
   
-  2. Do other stuffs
+  2. To query Twitter you must add API keys and Consumer tokens within the `get_tweets.py` script:
+  ```
+    consumer_key = ""
+    consumer_secret = ""
+    access_key = ""
+    access_secret = ""
+  ```
   
   3. Do more stuffs
