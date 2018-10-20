@@ -13,7 +13,12 @@ Instructions for running:
     git clone https://github.com/skutchiewutch/bizzle.git
   ```
   
-  2. To query Twitter you must add API keys and Consumer tokens within the `get_tweets.py` script:
+  2. To query Twitter you must add API keys and Consumer tokens within a `secrets.py` file in your working directory.
+  
+ ```
+    nano secrets.py
+ ```
+   Copy and Paste keys & tokens in the following format and exit the editor (Ctrl-X, Y, Enter).
   ```
     consumer_key = ""
     consumer_secret = ""
