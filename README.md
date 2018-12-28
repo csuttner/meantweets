@@ -5,6 +5,7 @@
 Objective: get the average/mean of a twitter user's tweet history.
 
 Input: Twitter handle / account name
+
 Output: a single tweet that averages tweet length and key word usage.
 
 Instructions for running:
