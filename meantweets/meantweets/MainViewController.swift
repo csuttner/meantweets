@@ -12,41 +12,31 @@ class MainViewController: UIViewController {
     
     // MARK: - UI Elements
     
-    lazy var mainStack: UIStackView = {
-        let mainStack = UIStackView()
-        mainStack.axis = .vertical
-        mainStack.alignment = .center
-        
-        let subStack = UIStackView()
-        subStack.axis = .horizontal
+    let labelStack: UIStackView = {
+        let stack = UIStackView()
         
         let appLogo = UILabel()
         appLogo.textColor = .white
         appLogo.font = UIFont.init(name: "HelveticaNeue-Bold", size: 40)
         appLogo.text = ">:|"
         appLogo.transform = CGAffineTransform(rotationAngle: .pi / 2)
-        subStack.addArrangedSubview(appLogo)
-
+        
         let appName = UILabel()
         appName.textColor = .white
         appName.font = UIFont.boldSystemFont(ofSize: 40)
         appName.text = " mean tweets"
-        subStack.addArrangedSubview(appName)
         
-        mainStack.addArrangedSubview(subStack)
-        
+        stack.addArrangedSubview(appLogo)
+        stack.addArrangedSubview(appName)
+        return stack
+    }()
+    
+    let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "@twitter_handle"
         searchBar.searchBarStyle = .minimal
         searchBar.searchTextField.backgroundColor = .white
-        
-        let anotherStack = UIStackView()
-        anotherStack.axis = .vertical
-        
-        anotherStack.addArrangedSubview(mainStack)
-        anotherStack.addArrangedSubview(searchBar)
-        
-        return anotherStack
+        return searchBar
     }()
     
     let submitButton: UIButton = {
@@ -74,20 +64,23 @@ class MainViewController: UIViewController {
         let height = view.frame.height
         let padding: CGFloat = 16
         
-        setUpStack(height: height, padding: padding)
+        setUpLabels(height: height)
+        setUpSearchBar(padding: padding)
         setUpButton(height: height)
         
         view.backgroundColor = .systemBlue
     }
     
-    func setUpStack(height: CGFloat, padding: CGFloat) {
-        view.addSubview(mainStack)
-        mainStack.spacing = padding
-        mainStack.translatesAutoresizingMaskIntoConstraints = false
-        mainStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding).isActive = true
-        mainStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding).isActive = true
-        mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        mainStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -height / 6).isActive = true
+    func setUpLabels(height: CGFloat) {
+        view.addSubview(labelStack)
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        labelStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        labelStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -height / 6).isActive = true
+    }
+    
+    func setUpSearchBar(padding: CGFloat) {
+        view.addSubview(searchBar)
+        searchBar.anchor(top: labelStack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: padding, paddingLeft: padding, paddingRight: padding)
     }
     
     func setUpButton(height: CGFloat) {
