@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainView: UIViewController {
     
     // MARK: - UI Elements
     
@@ -94,8 +94,7 @@ class MainViewController: UIViewController {
     // MARK: - Selectors
     
     @objc func didTapSubmit() {
-        let vc = ResultsViewController()
-        present(vc, animated: true, completion: nil)
+        present(ResultsView(), animated: true, completion: nil)
     }
     
 }
