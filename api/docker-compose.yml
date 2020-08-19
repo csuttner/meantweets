@@ -1,0 +1,9 @@
+version: "3.3"
+services:
+  api:
+    container_name: meantweets_api
+    build: .
+    volumes:
+      - ./:/api/
+    ports:
+      - "5000:5000"

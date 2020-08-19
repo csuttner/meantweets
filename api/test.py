@@ -1,8 +1,6 @@
 import requests
-from secrets import Evan_Mac_ip
 
-BASE = "http://" + Evan_Mac_ip + ":5000/"
+BASE = "http://0.0.0.0:5000/"
 
-response = requests.get(BASE + "/meantweet/@RealDonaldTrump")
+response = requests.get(BASE + "/meantweet/@clayclayclay")
 print(response.json())
-
