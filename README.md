@@ -27,4 +27,16 @@ Instructions for running:
     access_secret = ""
   ```
   
-  3. Do more stuffs
+## Docker Setup
+```
+docker-compose build
+```
+you only need to build this image once
+```
+docker-compose up
+```
+go to http://localhost:5000/ for homepage placeholder
+go to http://localhost:5000/meantweet/@clayclayclay to test the barebones api
+
+Once that looks good just add this to your testing workflow 
+
