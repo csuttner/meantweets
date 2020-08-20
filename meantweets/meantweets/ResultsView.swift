@@ -52,7 +52,7 @@ class ResultsView: UIViewController {
                 print(error)
             case .success(let tweet):
                 DispatchQueue.main.async { [weak self] in
-                    self?.outputTextView.text = tweet.handle
+                    self?.outputTextView.text = tweet.output
                 }
             }
         })
