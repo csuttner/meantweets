@@ -17,8 +17,8 @@ struct TweetRequest {
     
     let resourceURL: URL
     
-    init() {
-        let resourceString = "http://" + Secrets.mac_ip + ":5000/meantweet/@RealDonaldTrump"
+    init(handle: String) {
+        let resourceString = "http://\(Secrets.mac_ip):5000/meantweet/\(handle)"
         guard let resourceURL = URL(string: resourceString) else {
             fatalError("Invalid URL String")
         }
