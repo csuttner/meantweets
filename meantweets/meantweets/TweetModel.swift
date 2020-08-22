@@ -10,4 +10,5 @@ import Foundation
 
 struct Tweet: Decodable {
     let handle: String
+    let output: String
 }

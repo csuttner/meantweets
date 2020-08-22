@@ -10,6 +10,18 @@ import UIKit
 
 class ResultsView: UIViewController {
     
+    let handle: String
+    
+    init(handle: String) {
+        self.handle = handle
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let outputTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .white
@@ -33,14 +45,14 @@ class ResultsView: UIViewController {
     }
     
     func fireRequest() {
-        let tweetRequest = TweetRequest()
+        let tweetRequest = TweetRequest(handle: handle)
         tweetRequest.getTweet(completion: { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let tweet):
                 DispatchQueue.main.async { [weak self] in
-                    self?.outputTextView.text = tweet.handle
+                    self?.outputTextView.text = tweet.output
                 }
             }
         })

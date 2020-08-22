@@ -94,8 +94,7 @@ class MainView: UIViewController {
     // MARK: - Selectors
     
     @objc func didTapSubmit() {
-        present(ResultsView(), animated: true, completion: nil)
+        present(ResultsView(handle: searchBar.text ?? ""), animated: true, completion: nil)
     }
     
 }
-
