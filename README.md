@@ -11,7 +11,7 @@ Output: a single tweet that averages tweet length and key word usage.
 Instructions for running:
   1. Clone repository:
   ```
-    git clone https://github.com/skutchiewutch/bizzle.git
+    git clone https://github.com/csuttner/meantweets.git
   ```
   
   2. To query Twitter you must add API keys and Consumer tokens within a `secrets.py` file in your working directory.
