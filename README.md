@@ -26,5 +26,3 @@ Instructions for running:
     access_key = ""
     access_secret = ""
   ```
-  
-  3. Do more stuffs
