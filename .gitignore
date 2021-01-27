@@ -2,3 +2,5 @@ secrets.py
 secrets.swift
 *.csv
 
+.DS_Store
+xcuserdata/
