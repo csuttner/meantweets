@@ -56,6 +56,7 @@ class MainView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        enableDismissKeyboard()
     }
     
     // MARK: - UI Setup
@@ -91,10 +92,21 @@ class MainView: UIViewController {
         submitButton.addTarget(self, action: #selector(didTapSubmit), for: .touchUpInside)
     }
 
+    // MARK: - Tap Gesture
+    
+    func enableDismissKeyboard() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    
     // MARK: - Selectors
     
     @objc func didTapSubmit() {
         present(ResultsView(handle: searchBar.text ?? ""), animated: true, completion: nil)
     }
     
+    @objc func dismissKeyboard() {
+        searchBar.resignFirstResponder()
+    }
 }
