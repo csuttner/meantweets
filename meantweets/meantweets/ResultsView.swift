@@ -55,8 +55,10 @@ class ResultsView: UIViewController {
     }
     
     func loadDataToViews(from response: MTResponse) {
-        outputTextView.text = response.handle
-        // TODO: logic for loading other data from the response
+        outputTextView.text =
+            "handle: \(response.handle)\n" +
+            "tweet count: \(response.tweet_count)\n" +
+            "distinct words: \(response.distinct_words)"
     }
     
     //MARK: UI Elements
