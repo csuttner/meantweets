@@ -8,17 +8,15 @@
 
 import Foundation
 
-enum TweetError: Error {
+enum RequestError: Error {
     case noDataAvailable
     case cantProcessData
 }
 
-struct TweetRequest {
+struct MTRequest {
     
     let resourceURL: URL
-    
-    
-    
+
     init(handle: String) {
         let resourceString = "http://localhost:5000/meantweet/\(handle)"
         guard let resourceURL = URL(string: resourceString) else {
@@ -28,7 +26,7 @@ struct TweetRequest {
         print(resourceURL)
     }
     
-    func getTweet(completion: @escaping(Result<Tweet, TweetError>) -> Void) {
+    func send(completion: @escaping(Result<MTResponse, RequestError>) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
             guard let jsonData = data else {
                 completion(.failure(.noDataAvailable))
@@ -37,12 +35,10 @@ struct TweetRequest {
             
             do {
                 let decoder = JSONDecoder()
-                let tweetResponse = try decoder.decode(Tweet.self, from: jsonData)
-                let tweet = tweetResponse
-                completion(.success(tweet))
+                let mtResponse = try decoder.decode(MTResponse.self, from: jsonData)
+                completion(.success(mtResponse))
             } catch {
                 completion(.failure(.cantProcessData))
-                
             }
         }
         dataTask.resume()

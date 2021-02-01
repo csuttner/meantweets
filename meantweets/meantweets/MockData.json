@@ -1,12 +1,17 @@
 {
-    “handle” : "@ClaySuttner",
-    “tweet_count” : 87,
+    "handle" : "@ClaySuttner",
+    "tweet_count" : 87,
     "distinct_words” : 45,
-    “words”: [
+    "words": [
         {
             "word" : "foo",
-            “count” : 5,
-            “score” : 10
+            "count" : 5,
+            "score" : 10
+        },
+        {
+            "word" : "bar",
+            "count" : 2,
+            "score" : 1
         }
     ]
 }

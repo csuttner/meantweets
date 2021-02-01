@@ -10,17 +10,47 @@ import UIKit
 
 class ResultsView: UIViewController {
     
+    //MARK: Properties
+    
     let handle: String
+    
+    //MARK: Init
     
     init(handle: String) {
         self.handle = handle
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUi()
+        sendRequest()
+    }
+    
+    func sendRequest() {
+        let mtRequest = MTRequest(handle: handle)
+        mtRequest.send { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let mtResponse):
+                self?.loadDataToViews(from: mtResponse)
+            }
+        }
+    }
+    
+    func loadDataToViews(from response: MTResponse) {
+        outputTextView.text = response.handle
+        // TODO: logic for loading other data from the response
+    }
+    
+    //MARK: UI Elements
     
     let outputTextView: UITextView = {
         let textView = UITextView()
@@ -29,32 +59,24 @@ class ResultsView: UIViewController {
         return textView
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpView()
-        fireRequest()
-    }
+    //MARK: UI Setup
     
-    func setUpView() {
+    func setupUi() {
         view.backgroundColor = .white
         view.addSubview(outputTextView)
         
         let padding: CGFloat = 16
         
-        outputTextView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: padding, paddingLeft: padding, paddingBottom: padding, paddingRight: padding)
+        outputTextView.anchor(
+            top: view.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor,
+            paddingTop: padding,
+            paddingLeft: padding,
+            paddingBottom: padding,
+            paddingRight: padding
+        )
     }
     
-    func fireRequest() {
-        let tweetRequest = TweetRequest(handle: handle)
-        tweetRequest.getTweet(completion: { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let tweet):
-                DispatchQueue.main.async { [weak self] in
-                    self?.outputTextView.text = tweet.output
-                }
-            }
-        })
-    }
 }
