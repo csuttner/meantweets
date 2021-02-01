@@ -2,7 +2,7 @@
 
 ### Show who people are online
 
-MeanTweets is an iOS application that applies NLP to a given twitter user's data to obtain insight about their online behavior.
+iOS application that applies NLP to Twitter user data to obtain insight about online behavior.
 
 Instructions for running:
   1. Clone repository:
