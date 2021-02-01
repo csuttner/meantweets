@@ -1,10 +1,12 @@
 # **MEAN tweets**
 
+### <a href="https://github.com/csuttner/meantweets/wiki">Project Wiki</a>
+
 ### Show who people are online
 
-iOS application that applies NLP to Twitter user data to obtain insight about online behavior.
+iOS application applying NLP to Twitter user data to obtain insight about online behavior.
 
-Instructions for running:
+### Setup
   1. Clone repository:
   ```
     git clone https://github.com/csuttner/meantweets.git
