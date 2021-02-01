@@ -30,9 +30,12 @@ class ResultsView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUi()
-        sendRequest()
+        
+        // Mock request that gets data from local JSON file
+        sendMockRequest()
     }
     
+    // Real request method
     func sendRequest() {
         let mtRequest = MTRequest(handle: handle)
         mtRequest.send { [weak self] result in
@@ -43,6 +46,12 @@ class ResultsView: UIViewController {
                 self?.loadDataToViews(from: mtResponse)
             }
         }
+    }
+    
+    func sendMockRequest() {
+        let mtRequest = MTRequest(handle: handle)
+        let mtResponse = mtRequest.sendMock()
+        loadDataToViews(from: mtResponse)
     }
     
     func loadDataToViews(from response: MTResponse) {

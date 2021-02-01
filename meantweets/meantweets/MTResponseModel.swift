@@ -16,7 +16,7 @@ struct MTResponse: Decodable {
 }
 
 struct Word: Decodable {
-    let value: String
+    let word: String
     let count: Int
     let score: Int
 }

@@ -43,4 +43,12 @@ struct MTRequest {
         }
         dataTask.resume()
     }
+    
+    func sendMock() -> MTResponse {
+        let path = Bundle.main.path(forResource: "MockData", ofType: "json")
+        let json = try! String(contentsOfFile: path!, encoding: .utf8)
+        let data = json.data(using: .utf8)!
+        let decoder = JSONDecoder()
+        return try! decoder.decode(MTResponse.self, from: data)
+    }
 }
