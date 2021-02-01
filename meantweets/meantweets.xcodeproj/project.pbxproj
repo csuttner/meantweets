@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F32517F724EB6F4E00589A5B /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517F624EB6F4E00589A5B /* TweetModel.swift */; };
+		F32517F724EB6F4E00589A5B /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517F624EB6F4E00589A5B /* ResponseModel.swift */; };
 		F32517F924EB705500589A5B /* TweetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517F824EB705500589A5B /* TweetRequest.swift */; };
 		F32517FB24EB745800589A5B /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517FA24EB745800589A5B /* secrets.swift */; };
 		F3FB38B224EB14760094DE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB38B124EB14760094DE00 /* AppDelegate.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F32517F624EB6F4E00589A5B /* TweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetModel.swift; sourceTree = "<group>"; };
+		F32517F624EB6F4E00589A5B /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		F32517F824EB705500589A5B /* TweetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRequest.swift; sourceTree = "<group>"; };
 		F32517FA24EB745800589A5B /* secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 		F3FB38AE24EB14760094DE00 /* meantweets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meantweets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +67,7 @@
 				F3FB38C524EB44200094DE00 /* ResultsView.swift */,
 				F3FB38C924EB62860094DE00 /* AnchorExtension.swift */,
 				F32517F824EB705500589A5B /* TweetRequest.swift */,
-				F32517F624EB6F4E00589A5B /* TweetModel.swift */,
+				F32517F624EB6F4E00589A5B /* ResponseModel.swift */,
 				F32517FA24EB745800589A5B /* secrets.swift */,
 				F3FB38BA24EB147A0094DE00 /* Assets.xcassets */,
 				F3FB38BC24EB147A0094DE00 /* LaunchScreen.storyboard */,
@@ -149,7 +149,7 @@
 				F3FB38B624EB14760094DE00 /* MainView.swift in Sources */,
 				F32517FB24EB745800589A5B /* secrets.swift in Sources */,
 				F3FB38B224EB14760094DE00 /* AppDelegate.swift in Sources */,
-				F32517F724EB6F4E00589A5B /* TweetModel.swift in Sources */,
+				F32517F724EB6F4E00589A5B /* ResponseModel.swift in Sources */,
 				F32517F924EB705500589A5B /* TweetRequest.swift in Sources */,
 				F3FB38CA24EB62860094DE00 /* AnchorExtension.swift in Sources */,
 				F3FB38C624EB44200094DE00 /* ResultsView.swift in Sources */,
