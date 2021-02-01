@@ -4,7 +4,7 @@
 
 ### Show who people are online
 
-iOS application and containerized backend applying NLP to Twitter user data to obtain insight about online behavior.
+iOS app and containerized backend, applying NLP to Twitter user data for obtaining insight about online behavior.
 
 ### Setup
   1. Clone repository:
