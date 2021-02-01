@@ -1,12 +1,8 @@
 # **MEAN tweets**
 
-### This is fun code for learning puposes.
+### Show who people are online
 
-Objective: get the average/mean of a twitter user's tweet history.
-
-Input: Twitter handle / account name
-
-Output: a single tweet that averages tweet length and key word usage.
+MeanTweets is an iOS application that applies NLP to a given twitter user's data to obtain insight about their online behavior.
 
 Instructions for running:
   1. Clone repository:
