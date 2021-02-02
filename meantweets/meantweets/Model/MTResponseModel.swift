@@ -8,7 +8,15 @@
 
 import Foundation
 
-struct Tweet: Decodable {
+struct MTResponse: Decodable {
     let handle: String
-    let output: String
+    let tweet_count: Int
+    let unique_words: Int
+    let words: [Word]
+}
+
+struct Word: Decodable {
+    let word: String
+    let count: Int
+    let score: Int
 }
