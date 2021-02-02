@@ -1,64 +1,74 @@
+__author__ = 'evfairchild'
 # !/usr/bin/env python
 # encoding: utf-8
 
 '''
 Twitter only allows access to a users most recent 3240 tweets with this method
-This script batch queries the Twitter API 200 tweets at a time.
 Twitter limits the number of requests allowed on free developer accounts.  Please run this script sparingly.
 
 Because of all the Twitter limitations, we may want to consider a JSON web approach down the road.  See here:
 https://github.com/Jefferson-Henrique/GetOldTweets-python
-
-For additional Tweet object attributes see:
-https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object.html
 '''
 
+import json
 import tweepy
-import csv
 import argparse
 from secrets import *
 
 
-def all_tweets(screen_name):
+class Twitter(object):
+    def __init__(self, handle, count=10):
+        self.handle = handle
+        self.count = count
 
-    # authorize twitter, initialize tweepy
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_key, access_secret)
-    api = tweepy.API(auth)
+        # authorize twitter, initialize tweepy
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_key, access_secret)
+        self.api = tweepy.API(auth)
 
-    alltweets = []
+        self.data = self.build_mt_json()
 
-    new_tweets = api.user_timeline(screen_name=screen_name, count=200)
+    def get_tweets(self):
+        tweets = self.api.user_timeline(screen_name=self.handle, count=self.count)
 
-    alltweets.extend(new_tweets)
+        # transform the tweepy tweets into a 2D array that will populate the csv
+        return [tweet.text.replace('\n', '') for tweet in tweets]
 
-    # save the id of the oldest tweet less one
-    oldest = alltweets[-1].id - 1
+    def words(self):
+        all_words = ' '.join(self.get_tweets()).split(' ')
 
-    # keep grabbing tweets until there are no tweets left to grab
-    while len(new_tweets) > 0:
-        # print "getting tweets before %s" % (oldest)
-        new_tweets = api.user_timeline(screen_name=screen_name, count=200, max_id=oldest)
-        alltweets.extend(new_tweets)
+        with open('stopwords.txt', 'r') as file:
+            stopwords = file.read().split('\n')
 
-        # update the id of the oldest tweet less one
-        oldest = alltweets[-1].id - 1
+        words = {}
+        for word in all_words:
+            if word.lower() not in stopwords:
+                words[word] = words.get(word, 0) + 1
+            else:
+                pass
 
-        print("...%s tweets downloaded so far" % (len(alltweets)))
+        # apparently you can sort dicts in Python 3.9
+        words = {k: v for k, v in sorted(words.items(), key=lambda item: item[1], reverse=True)}
+        unique = set(words)
 
-    # transform the tweepy tweets into a 2D array that will populate the csv
-    outtweets = [[tweet.text.encode("utf-8")] for tweet in alltweets]  # we can request tons of different attributes
-    # print(outtweets[0:100])
+        return len(unique), words
 
-    with open('%s_tweets.csv' % screen_name, 'wb') as f:
-        writer = csv.writer(f)
-        # writer.writerow(["id", "created_at", "text"])
-        writer.writerows(outtweets)
-    pass
+    def build_mt_json(self):
+        unique, words = self.words()
+        data = {"handle": self.handle,
+                "tweet_count": self.count,
+                "unique_words": unique,
+                "words": [
+                    words
+                ]}
+
+        return json.dumps(data)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--username', '-u', type=str)
     args = parser.parse_args()
-    all_tweets(args.username)
+    clay = '@ClaySuttner'
+    potus = '@POTUS'
+    print(type(Twitter(potus).data))
