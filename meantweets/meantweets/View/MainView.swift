@@ -10,47 +10,21 @@ import UIKit
 
 class MainView: UIViewController {
     
-    // MARK: Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUi()
-        enableDismissKeyboard()
-    }
-    
-    // MARK: Tap Gesture
-    
-    func enableDismissKeyboard() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    
-    // MARK: Selectors
-    
-    @objc func didTapSubmit() {
-        present(ResultsView(handle: searchBar.text ?? ""), animated: true, completion: nil)
-    }
-    
-    @objc func dismissKeyboard() {
-        searchBar.resignFirstResponder()
-    }
-    
     // MARK: - UI Elements
     
     let labelStack: UIStackView = {
         let stack = UIStackView()
         
         let appLogo = UILabel()
-        appLogo.textColor = .white
         appLogo.font = UIFont.init(name: "HelveticaNeue-Bold", size: 40)
         appLogo.text = ">:|"
+        appLogo.textColor = .white
         appLogo.transform = CGAffineTransform(rotationAngle: .pi / 2)
         
         let appName = UILabel()
-        appName.textColor = .white
         appName.font = UIFont.boldSystemFont(ofSize: 40)
         appName.text = " mean tweets"
+        appName.textColor = .white
         
         stack.addArrangedSubview(appLogo)
         stack.addArrangedSubview(appName)
@@ -76,6 +50,32 @@ class MainView: UIViewController {
         button.layer.cornerRadius = button.frame.height / 2
         return button
     }()
+    
+    // MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUi()
+        enableDismissKeyboard()
+    }
+    
+    // MARK: Tap Gesture
+    
+    func enableDismissKeyboard() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    
+    // MARK: Selectors
+    
+    @objc func didTapSubmit() {
+        present(ResultsView(handle: searchBar.text ?? ""), animated: true, completion: nil)
+    }
+    
+    @objc func dismissKeyboard() {
+        searchBar.resignFirstResponder()
+    }
     
     // MARK: - UI Setup
     

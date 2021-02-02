@@ -14,6 +14,19 @@ class ResultsView: UIViewController {
     
     let handle: String
     
+    //MARK: UI Elements
+    
+    let table = WordTable()
+    
+    let outputLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        return label
+    }()
+    
     //MARK: Init
     
     init(handle: String) {
@@ -55,38 +68,34 @@ class ResultsView: UIViewController {
     }
     
     func loadDataToViews(from response: MTResponse) {
-        outputTextView.text =
+        outputLabel.text =
             "handle: \(response.handle)\n" +
             "tweet count: \(response.tweet_count)\n" +
-            "distinct words: \(response.distinct_words)"
+            "distinct words: \(response.unique_words)"
+        table.words = response.words
     }
-    
-    //MARK: UI Elements
-    
-    let outputTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = .white
-        textView.font = UIFont.preferredFont(forTextStyle: .title3)
-        return textView
-    }()
-    
+
     //MARK: UI Setup
     
     func setupUi() {
         view.backgroundColor = .white
-        view.addSubview(outputTextView)
         
-        let padding: CGFloat = 16
-        
-        outputTextView.anchor(
+        view.addSubview(outputLabel)
+        outputLabel.anchor(
             top: view.topAnchor,
             left: view.leftAnchor,
-            bottom: view.bottomAnchor,
             right: view.rightAnchor,
-            paddingTop: padding,
-            paddingLeft: padding,
-            paddingBottom: padding,
-            paddingRight: padding
+            paddingTop: .padding,
+            paddingLeft: .padding,
+            paddingRight: .padding
+        )
+        
+        view.addSubview(table)
+        table.anchor(
+            top: outputLabel.bottomAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor
         )
     }
     

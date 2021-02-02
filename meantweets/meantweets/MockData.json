@@ -1,7 +1,7 @@
 {
     "handle" : "@ClaySuttner",
     "tweet_count" : 87,
-    "distinct_words" : 45,
+    "unique_words" : 45,
     "words" : [
         {
             "word" : "foo",

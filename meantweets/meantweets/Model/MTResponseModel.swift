@@ -11,7 +11,7 @@ import Foundation
 struct MTResponse: Decodable {
     let handle: String
     let tweet_count: Int
-    let distinct_words: Int
+    let unique_words: Int
     let words: [Word]
 }
 

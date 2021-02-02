@@ -23,7 +23,6 @@ struct MTRequest {
             fatalError("Invalid URL String")
         }
         self.resourceURL = resourceURL
-        print(resourceURL)
     }
     
     func send(completion: @escaping(Result<MTResponse, RequestError>) -> Void) {
