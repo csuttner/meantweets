@@ -40,29 +40,38 @@ class Twitter(object):
         with open('stopwords.txt', 'r') as file:
             stopwords = file.read().split('\n')
 
-        words = {}
+        words = []
+        word_counts = {}
         for word in all_words:
             if word.lower() not in stopwords:
-                words[word] = words.get(word, 0) + 1
+                word_counts[word] = word_counts.get(word, 0) + 1
             else:
                 pass
 
         # apparently you can sort dicts in Python 3.9
-        words = {k: v for k, v in sorted(words.items(), key=lambda item: item[1], reverse=True)}
-        unique = set(words)
+        word_counts = {k: v for k, v in sorted(word_counts.items(), key=lambda item: item[1], reverse=True)}
 
-        return len(unique), words
+        for word in word_counts.keys():
+            words.append(
+                {
+                    "word": word,
+                    "count": word_counts[word],
+                    "score": word_counts[word]
+                }
+            )
+
+        return len(words), words
 
     def build_mt_json(self):
         unique, words = self.words()
-        data = {"handle": self.handle,
-                "tweet_count": self.count,
-                "unique_words": unique,
-                "words": [
-                    words
-                ]}
+        data = {
+            "handle": self.handle,
+            "tweet_count": self.count,
+            "unique_words": unique,
+            "words": words
+        }
 
-        return json.dumps(data)
+        return data
 
 
 if __name__ == '__main__':
