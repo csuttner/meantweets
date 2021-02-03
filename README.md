@@ -1,4 +1,4 @@
-# **MEAN tweets**
+# **MeanTweets**
 
 ### <a href="https://github.com/csuttner/meantweets/wiki">Project Wiki</a>
 
