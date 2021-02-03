@@ -68,11 +68,13 @@ class ResultsView: UIViewController {
     }
     
     func loadDataToViews(from response: MTResponse) {
-        outputLabel.text =
-            "handle: \(response.handle)\n" +
-            "tweet count: \(response.tweet_count)\n" +
-            "distinct words: \(response.unique_words)"
-        table.words = response.words
+        DispatchQueue.main.async {
+            outputLabel.text =
+                "handle: \(response.handle)\n" +
+                "tweet count: \(response.tweet_count)\n" +
+                "distinct words: \(response.unique_words)"
+            table.words = response.words
+        }
     }
 
     //MARK: UI Setup
