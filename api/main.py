@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api, Resource
+from twitter.twitter import Twitter
 
 app = Flask(__name__)
 api = Api(app)
@@ -12,10 +13,10 @@ def get_test():
 def home():
     return 'Meantweets Flask homepage'
 
+
 class MeanTweetsApi(Resource):
     def get(self, handle):
-        return {'handle': handle,
-        'output': handle[::-1]}
+        return Twitter(handle).data
 
 
 api.add_resource(MeanTweetsApi, "/meantweet/<string:handle>")
