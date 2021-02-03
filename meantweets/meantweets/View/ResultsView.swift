@@ -45,7 +45,7 @@ class ResultsView: UIViewController {
         setupUi()
         
         // Mock request that gets data from local JSON file
-        sendMockRequest()
+        sendRequest()
     }
     
     // Real request method
