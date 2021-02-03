@@ -45,7 +45,7 @@ class ResultsView: UIViewController {
         setupUi()
         
         // Mock request that gets data from local JSON file
-        sendMockRequest()
+        sendRequest()
     }
     
     // Real request method
@@ -68,11 +68,13 @@ class ResultsView: UIViewController {
     }
     
     func loadDataToViews(from response: MTResponse) {
-        outputLabel.text =
-            "handle: \(response.handle)\n" +
-            "tweet count: \(response.tweet_count)\n" +
-            "distinct words: \(response.unique_words)"
-        table.words = response.words
+        DispatchQueue.main.async { [weak self] in
+            self?.outputLabel.text =
+                "handle: \(response.handle)\n" +
+                "tweet count: \(response.tweet_count)\n" +
+                "distinct words: \(response.unique_words)"
+            self?.table.words = response.words
+        }
     }
 
     //MARK: UI Setup

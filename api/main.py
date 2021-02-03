@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Api, Resource
 from twitter.twitter import Twitter
 
@@ -13,14 +13,14 @@ def get_test():
 def home():
     return 'Meantweets Flask homepage'
 
-
 class MeanTweetsApi(Resource):
     def get(self, handle):
-        return Twitter(handle).data
+        data = Twitter(handle).data
+        return data
 
 
 api.add_resource(MeanTweetsApi, "/meantweet/<string:handle>")
 #format: "/meantweet/<string:handle>/<int:num>/"
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')

@@ -10,7 +10,7 @@ import UIKit
 
 class WordTable: UITableView {
     
-    var words: [Word]! {
+    var words = [Word]() {
         didSet {
             reloadData()
         }

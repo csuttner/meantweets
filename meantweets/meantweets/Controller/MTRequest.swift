@@ -23,6 +23,7 @@ struct MTRequest {
             fatalError("Invalid URL String")
         }
         self.resourceURL = resourceURL
+        print(resourceURL)
     }
     
     func send(completion: @escaping(Result<MTResponse, RequestError>) -> Void) {
@@ -32,6 +33,7 @@ struct MTRequest {
                 return
             }
             
+            print(String(data: data!, encoding: .utf8))
             do {
                 let decoder = JSONDecoder()
                 let mtResponse = try decoder.decode(MTResponse.self, from: jsonData)
