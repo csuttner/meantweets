@@ -68,12 +68,12 @@ class ResultsView: UIViewController {
     }
     
     func loadDataToViews(from response: MTResponse) {
-        DispatchQueue.main.async {
-            outputLabel.text =
+        DispatchQueue.main.async { [weak self] in
+            self?.outputLabel.text =
                 "handle: \(response.handle)\n" +
                 "tweet count: \(response.tweet_count)\n" +
                 "distinct words: \(response.unique_words)"
-            table.words = response.words
+            self?.table.words = response.words
         }
     }
 
