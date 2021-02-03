@@ -4,6 +4,7 @@ services:
     container_name: meantweets_api
     build: .
     volumes:
-      - ./:/api/
+     - ./api:/api
+     - ./twitter:/api/twitter
     ports:
       - "5000:5000"

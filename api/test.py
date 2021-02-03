@@ -2,5 +2,5 @@ import requests
 
 BASE = "http://0.0.0.0:5000/"
 
-response = requests.get(BASE + "/meantweet/@clayclayclay")
-print(response.json())
+response = requests.get(BASE + "/meantweet/@POTUS")
+print(response.content)
