@@ -1,5 +1,5 @@
-secrets.py
-Secrets.swift
+*/secrets.py
+*/Secrets.swift
 *.csv
 
 .DS_Store
