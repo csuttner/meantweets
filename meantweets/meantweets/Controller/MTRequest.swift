@@ -31,7 +31,7 @@ struct MTRequest {
                 completion(.failure(.noDataAvailable))
                 return
             }
-            print(String(data: data!, encoding: .utf8))
+            
             do {
                 let decoder = JSONDecoder()
                 let mtResponse = try decoder.decode(MTResponse.self, from: jsonData)
