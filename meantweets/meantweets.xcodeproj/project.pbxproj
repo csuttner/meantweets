@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F32517F724EB6F4E00589A5B /* MTResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517F624EB6F4E00589A5B /* MTResponseModel.swift */; };
 		F32517F924EB705500589A5B /* MTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517F824EB705500589A5B /* MTRequest.swift */; };
-		F32517FB24EB745800589A5B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32517FA24EB745800589A5B /* Secrets.swift */; };
 		F3D3063E25C90B6B002268AF /* WordTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3063D25C90B6B002268AF /* WordTable.swift */; };
 		F3D3064125C90E4A002268AF /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3064025C90E4A002268AF /* WordCell.swift */; };
 		F3D3064425C9133A002268AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3064325C9133A002268AF /* Constants.swift */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		F32517F624EB6F4E00589A5B /* MTResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTResponseModel.swift; sourceTree = "<group>"; };
 		F32517F824EB705500589A5B /* MTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTRequest.swift; sourceTree = "<group>"; };
-		F32517FA24EB745800589A5B /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F3D3063D25C90B6B002268AF /* WordTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTable.swift; sourceTree = "<group>"; };
 		F3D3064025C90E4A002268AF /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F3D3064325C9133A002268AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				F3FB38C924EB62860094DE00 /* AnchorExtension.swift */,
-				F32517FA24EB745800589A5B /* Secrets.swift */,
 				F3D3064325C9133A002268AF /* Constants.swift */,
 			);
 			path = Helpers;
@@ -192,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3FB38B624EB14760094DE00 /* MainView.swift in Sources */,
-				F32517FB24EB745800589A5B /* Secrets.swift in Sources */,
 				F3FB38B224EB14760094DE00 /* AppDelegate.swift in Sources */,
 				F3D3064125C90E4A002268AF /* WordCell.swift in Sources */,
 				F32517F724EB6F4E00589A5B /* MTResponseModel.swift in Sources */,
