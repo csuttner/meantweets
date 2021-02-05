@@ -1,10 +1,11 @@
-version: "3.3"
+version: '3.8'
 services:
-  api:
-    container_name: meantweets_api
-    build: .
-    volumes:
-     - ./api:/api
-     - ./twitter:/api/twitter
-    ports:
-      - "5000:5000"
+    api-service:
+        build: ./api/
+        volumes:
+            - ./api/:/app/
+        ports:
+            - 5000:5000
+        environment:
+            PORT: 5001
+            FLASK_DEBUG: 1

@@ -10,10 +10,9 @@ Because of all the Twitter limitations, we may want to consider a JSON web appro
 https://github.com/Jefferson-Henrique/GetOldTweets-python
 '''
 
-import json
+import os
 import tweepy
-import argparse
-from secrets import *
+from .secrets import *
 
 
 class Twitter(object):
@@ -31,13 +30,14 @@ class Twitter(object):
     def get_tweets(self):
         tweets = self.api.user_timeline(screen_name=self.handle, count=self.count)
 
-        # transform the tweepy tweets into a 2D array that will populate the csv
         return [tweet.text.replace('\n', '') for tweet in tweets]
 
     def words(self):
         all_words = ' '.join(self.get_tweets()).split(' ')
 
-        with open('stopwords.txt', 'r') as file:
+        __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+        with open(os.path.join(__location__,'stopwords.txt'), 'r') as file:
             stopwords = file.read().split('\n')
 
         words = {}
@@ -49,6 +49,7 @@ class Twitter(object):
 
         # apparently you can sort dicts in Python 3.9
         words = {k: v for k, v in sorted(words.items(), key=lambda item: item[1], reverse=True)}
+
         unique = set(words)
 
         return len(unique), words
@@ -58,17 +59,8 @@ class Twitter(object):
         data = {"handle": self.handle,
                 "tweet_count": self.count,
                 "unique_words": unique,
-                "words": [
+                "words":
                     words
-                ]}
+                }
 
-        return json.dumps(data)
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--username', '-u', type=str)
-    args = parser.parse_args()
-    clay = '@ClaySuttner'
-    potus = '@POTUS'
-    print(type(Twitter(potus).data))
+        return data
