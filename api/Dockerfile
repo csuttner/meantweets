@@ -1,11 +1,12 @@
-FROM python:3.6.12-alpine3.12
+FROM python:3.6
 
-COPY . /api
+RUN mkdir /app/
 
-WORKDIR /api
+COPY . /app
 
+WORKDIR /app
+
+EXPOSE 5000
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
-
-CMD ["main.py"]
+CMD ["python", "main.py"]
