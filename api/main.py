@@ -7,11 +7,11 @@ api = Api(app)
 
 @app.route('/api/test')
 def get_test():
-    return 'TEST PAGE: API RUNNING'
+    return 'TEST PAGE: API RUN'
 
 @app.route('/')
 def home():
-    return 'Meantweets Flask homepage'
+    return 'Meantweets Flask'
 
 
 class MeanTweetsApi(Resource):
@@ -23,4 +23,4 @@ api.add_resource(MeanTweetsApi, "/meantweet/<string:handle>")
 #format: "/meantweet/<string:handle>/<int:num>/"
 
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0')
+    app.run(host='0.0.0.0')
