@@ -4,7 +4,7 @@ Deploying Meantweets Webapp using Lambda, API Gateway, DynamoDB and S3 with Serv
 ## Deploy Backend
 1. `cd lambda`
 2. `sls deploy` - this command will create S3 buckets, Dynamo-db table, Lambda and ApiGateway. NOTE: This might cause charges to your AWS account. Make sure to clean up after you are done.
-3. deploy API: `aws apigateway create-deployment --rest-api-id <rest-api-id> --region us-east-1`  This can also be done manually using  API Gateway.
+3. deploy API: `aws apigateway create-deployment --rest-api-id <rest-api-id> --region us-east-1 --stage-name dev`  This can also be done manually using  API Gateway.
 4. copy and paste the invoke url to 'app-client/src/config.js'
 
 
