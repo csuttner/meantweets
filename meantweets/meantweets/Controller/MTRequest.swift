@@ -18,7 +18,7 @@ struct MTRequest {
     let resourceURL: URL
 
     init(handle: String) {
-        let resourceString = "http://localhost:5000/meantweet/\(handle)"
+        let resourceString = "https://api.meantweets.io/meantweet/\(handle)"
         guard let resourceURL = URL(string: resourceString) else {
             fatalError("Invalid URL String")
         }
