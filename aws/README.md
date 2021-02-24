@@ -10,8 +10,9 @@ Deploying Meantweets Webapp using Lambda, API Gateway, DynamoDB and S3 with Serv
 
 ## Deploy Static Website
 1. `cd app-client`
-2. Create the production site `npm run build`
-3. Copy the site to S3 bucket. `aws s3 sync ./build s3://mt-bucket-20200215`
+2. `npm install`
+3. Create the production site `npm run build`
+4. Copy the site to S3 bucket. `aws s3 sync ./build s3://mt-bucket-20200215`
 
 Go to website: http://mt-bucket-20200215.s3-website-us-east-1.amazonaws.com/
 
