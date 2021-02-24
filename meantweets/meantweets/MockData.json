@@ -4,14 +4,259 @@
     "unique_words" : 45,
     "words" : [
         {
-            "word" : "foo",
-            "count" : 5,
-            "score" : 10
+            "count": "Count",
+            "score": "score",
+            "word": "\ufeffWord"
         },
         {
-            "word" : "bar",
-            "count" : 2,
-            "score" : 1
+            "count": "1",
+            "score": "50",
+            "word": "impress"
+        },
+        {
+            "count": "1",
+            "score": "49",
+            "word": "cave"
+        },
+        {
+            "count": "1",
+            "score": "48",
+            "word": "edge"
+        },
+        {
+            "count": "1",
+            "score": "47",
+            "word": "left"
+        },
+        {
+            "count": "1",
+            "score": "46",
+            "word": "pinch"
+        },
+        {
+            "count": "1",
+            "score": "45",
+            "word": "materialistic"
+        },
+        {
+            "count": "1",
+            "score": "44",
+            "word": "hot"
+        },
+        {
+            "count": "1",
+            "score": "43",
+            "word": "mind"
+        },
+        {
+            "count": "1",
+            "score": "42",
+            "word": "bird"
+        },
+        {
+            "count": "1",
+            "score": "41",
+            "word": "hushed"
+        },
+        {
+            "count": "1",
+            "score": "40",
+            "word": "rural"
+        },
+        {
+            "count": "1",
+            "score": "39",
+            "word": "lumpy"
+        },
+        {
+            "count": "1",
+            "score": "38",
+            "word": "swing"
+        },
+        {
+            "count": "1",
+            "score": "37",
+            "word": "bike"
+        },
+        {
+            "count": "1",
+            "score": "36",
+            "word": "red"
+        },
+        {
+            "count": "1",
+            "score": "35",
+            "word": "acoustic"
+        },
+        {
+            "count": "1",
+            "score": "34",
+            "word": "woebegone"
+        },
+        {
+            "count": "1",
+            "score": "33",
+            "word": "mindless"
+        },
+        {
+            "count": "1",
+            "score": "32",
+            "word": "high-pitched"
+        },
+        {
+            "count": "1",
+            "score": "31",
+            "word": "train"
+        },
+        {
+            "count": "1",
+            "score": "30",
+            "word": "disgusted"
+        },
+        {
+            "count": "1",
+            "score": "29",
+            "word": "purple"
+        },
+        {
+            "count": "1",
+            "score": "28",
+            "word": "egg"
+        },
+        {
+            "count": "1",
+            "score": "27",
+            "word": "travel"
+        },
+        {
+            "count": "1",
+            "score": "26",
+            "word": "homely"
+        },
+        {
+            "count": "1",
+            "score": "25",
+            "word": "many"
+        },
+        {
+            "count": "1",
+            "score": "24",
+            "word": "thumb"
+        },
+        {
+            "count": "1",
+            "score": "23",
+            "word": "garrulous"
+        },
+        {
+            "count": "1",
+            "score": "22",
+            "word": "sweet"
+        },
+        {
+            "count": "1",
+            "score": "21",
+            "word": "attempt"
+        },
+        {
+            "count": "1",
+            "score": "20",
+            "word": "church"
+        },
+        {
+            "count": "1",
+            "score": "19",
+            "word": "need"
+        },
+        {
+            "count": "1",
+            "score": "18",
+            "word": "trashy"
+        },
+        {
+            "count": "1",
+            "score": "17",
+            "word": "vacuous"
+        },
+        {
+            "count": "1",
+            "score": "16",
+            "word": "grumpy"
+        },
+        {
+            "count": "1",
+            "score": "15",
+            "word": "toys"
+        },
+        {
+            "count": "1",
+            "score": "14",
+            "word": "strong"
+        },
+        {
+            "count": "1",
+            "score": "13",
+            "word": "decision"
+        },
+        {
+            "count": "1",
+            "score": "12",
+            "word": "madly"
+        },
+        {
+            "count": "1",
+            "score": "11",
+            "word": "close"
+        },
+        {
+            "count": "1",
+            "score": "10",
+            "word": "chicken"
+        },
+        {
+            "count": "1",
+            "score": "9",
+            "word": "oval"
+        },
+        {
+            "count": "1",
+            "score": "8",
+            "word": "bomb"
+        },
+        {
+            "count": "1",
+            "score": "7",
+            "word": "poised"
+        },
+        {
+            "count": "1",
+            "score": "6",
+            "word": "name"
+        },
+        {
+            "count": "1",
+            "score": "5",
+            "word": "adaptable"
+        },
+        {
+            "count": "1",
+            "score": "4",
+            "word": "rake"
+        },
+        {
+            "count": "1",
+            "score": "3",
+            "word": "tightfisted"
+        },
+        {
+            "count": "1",
+            "score": "2",
+            "word": "beautiful"
+        },
+        {
+            "count": "1",
+            "score": "1",
+            "word": "fly"
         }
     ]
 }
